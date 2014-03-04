@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="217512689">
+    <data-source source="LOCAL" name="Rails todos: development" uuid="62cd8cee-848d-4b8c-ba02-81792b74064c">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:todos_development</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfdadfcd</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails todos: test" uuid="969d1567-48b6-4dd3-bde9-43b40b9ba4ac">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:todos_test</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfdadfcd</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails todos: production" uuid="3d526bc2-37c3-418e-83a3-56f5f6d44f95">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:todos_production</jdbc-url>
+      <user-name>todos</user-name>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
