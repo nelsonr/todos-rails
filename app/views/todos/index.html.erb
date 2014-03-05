@@ -4,6 +4,6 @@
 
 <ul>
   <% @todos.each do |todo| %>
-    <li><%= link_to todo.title, todo %></li>
+    <li><%= link_to todo.title, todo %>, Owner: <%= todo.user.name %></li>
   <% end %>
 </ul>

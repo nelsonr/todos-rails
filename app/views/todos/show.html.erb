@@ -6,7 +6,26 @@
 <p>Tasks</p>
 
 <ul>
-  <% @todo.tasks.each do |task|  %>
-    <li><%= task.content %></li>
+  <% if @todo.tasks.empty? %>
+      No tasks made yet...
+  <% else %>
+      <% @todo.tasks.each do |task|  %>
+          <li>
+            <%= task.content %>
+
+            <% if current_user == @todo.user  %>
+                <%= button_to "delete", todo_task_path(@todo, task), :method => :delete %>
+            <% end %>
+          </li>
+      <% end %>
   <% end %>
 </ul>
+
+<% if current_user == @todo.user  %>
+    <p>Add task</p>
+
+    <%= simple_form_for @task, url: todo_tasks_path(@todo) do |f| %>
+        <%= f.input :content, label: "Task text" %>
+        <%= f.button :submit %>
+    <% end %>
+<% end %>

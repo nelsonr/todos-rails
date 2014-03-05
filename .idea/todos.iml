@@ -132,7 +132,7 @@
     <orderEntry type="library" scope="PROVIDED" name="atomic (v1.1.15, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.7, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt-ruby (v3.1.5, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v3.1.1.0, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v2.3.2.2, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.4, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.5.3, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v3.2.2, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
@@ -162,6 +162,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12.2, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.2.14, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.2.6, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simple_form (v2.1.1, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.2.2, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.18.1, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.2.0, RVM: ruby-1.9.3-p545 [todos-app]) [gem]" level="application" />

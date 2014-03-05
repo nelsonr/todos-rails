@@ -1,0 +1,12 @@
+<h1>Create todo</h1>
+
+<%= simple_form_for @todo do |f| %>
+    <%= f.input :title %>
+    <%= f.input :private %>
+
+    <%= f.simple_fields_for :tasks do |task| %>
+        <%= task.input :content %>
+    <% end %>
+
+    <%= f.button :submit %>
+<% end %>

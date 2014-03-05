@@ -9,7 +9,9 @@ Todos::Application.routes.draw do
 
   get '/profile', to: 'users#profile'
 
-  resources :todos
+  resources :todos do
+    resources :tasks, only: [:new, :edit, :create, :destroy]
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

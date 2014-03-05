@@ -11,8 +11,8 @@ user = User.create!(name: 'John Doe 1',
                     password: 'password',
                     password_confirmation: 'password')
 
-todo = user.todos.create!(title: 'Todo A', private: false)
+todo = user.todos.create!(title: 'Todo A')
 
-todo.tasks.create!([{content: 'Task 1', finished: false},
-                    {content: 'Task 2', finished: false},
-                    {content: 'Task 3', finished: false}])
+todo.tasks.create!([{content: 'Task 1'},
+                    {content: 'Task 2'},
+                    {content: 'Task 3'}])
