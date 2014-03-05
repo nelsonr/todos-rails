@@ -1,0 +1,9 @@
+<h1>This is the homepage</h1>
+
+<h3>Tasks</h3>
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li><%= link_to todo.title, todo %></li>
+  <% end %>
+</ul>

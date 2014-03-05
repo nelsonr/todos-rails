@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  def home
-    render 'users/home'
-  end
-
-  def show
-    render 'users/show'
+  def profile
+    if user_signed_in?
+      render 'users/profile'
+    else
+      redirect_to root_path
+    end
   end
 end
+

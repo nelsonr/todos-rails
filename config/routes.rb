@@ -7,6 +7,10 @@ Todos::Application.routes.draw do
 
   root :to => 'todos#index'
 
+  get '/profile', to: 'users#profile'
+
+  resources :todos
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,12 @@
+<h1>View Todo</h1>
+
+<p>Title: <%= @todo.title %></p>
+<p>Owner: <%= @todo.user.name %></p>
+
+<p>Tasks</p>
+
+<ul>
+  <% @todo.tasks.each do |task|  %>
+    <li><%= task.content %></li>
+  <% end %>
+</ul>

@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.create!(name: 'John Doe 1',
+                    email: 'john1@example.com',
+                    password: 'password',
+                    password_confirmation: 'password')
+
+todo = user.todos.create!(title: 'Todo A', private: false)
+
+todo.tasks.create!([{content: 'Task 1', finished: false},
+                    {content: 'Task 2', finished: false},
+                    {content: 'Task 3', finished: false}])
