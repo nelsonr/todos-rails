@@ -1,8 +1,14 @@
 class TodosController < ApplicationController
-  before_filter :authenticate_user!, only: [:create, :new]
+  before_filter :authenticate_user!, only: [:create, :new, :update]
 
   def index
-    @todos = Todo.where private: false
+    if user_signed_in?
+      user_todos = current_user.todos
+      public_todos = Todo.where("user_id != ? AND private=false", current_user)
+      @todos = user_todos + public_todos
+    else
+      @todos = Todo.where private: false
+    end
   end
 
   def new
@@ -15,6 +21,10 @@ class TodosController < ApplicationController
 
     if user_signed_in?
       @task = Task.new
+    end
+
+    if @todo.user == current_user
+      @todo_private_toggle_label = @todo.private ? 'Set public' : 'Set private'
     end
 
     if @todo.private? and @todo.user != current_user
@@ -35,5 +45,13 @@ class TodosController < ApplicationController
     else
       render 'todos/new'
     end
+  end
+
+  def update
+    todo = Todo.find(params[:id])
+    todo.private = !todo.private
+    todo.save
+
+    redirect_to todo
   end
 end
