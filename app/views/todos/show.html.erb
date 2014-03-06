@@ -4,14 +4,14 @@
   <div>by <%= @todo.user.name %></div>
 </div>
 
-<% if current_user == @todo.user  %>
+<% if current_user == @todo.user %>
     <h4>Options</h4>
 
     <div class="toggle-privacy-form options">
       <%= button_to @todo_private_toggle_label, @todo, :method => :put %>
       <%= button_to "delete", @todo, :method => :delete %>
     </div>
-<% end  %>
+<% end %>
 
 <h4>Tasks</h4>
 
@@ -20,12 +20,12 @@
 <% else %>
     <table class="table table-striped datatable">
       <thead>
-        <% if current_user == @todo.user %>
-            <tr>
-              <th>Task</th>
+        <tr>
+          <th>Task</th>
+          <% if current_user == @todo.user %>
               <th>Options</th>
-            </tr>
-        <% end %>
+          <% end %>
+        </tr>
       </thead>
 
       <tbody>
