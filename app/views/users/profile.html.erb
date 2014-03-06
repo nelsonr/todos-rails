@@ -1,4 +1,10 @@
-<h1>This is user's profile page</h1>
-<h2>Welcome back <%= current_user.name %>!</h2>
+<div class="page-header"><h1>Edit Profile</h1></div>
 
-<p>You currently have <%= current_user.todos.count %> todos.</p>
+<%= simple_form_for current_user do |f| %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+
+    <%= f.button :submit %>
+<% end %>

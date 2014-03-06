@@ -1,36 +1,62 @@
 <div class="page-header">
   <h1><%= @todo.title %></h1>
+
   <div>by <%= @todo.user.name %></div>
 </div>
 
+<% if current_user == @todo.user  %>
+    <h4>Options</h4>
+
+    <div class="toggle-privacy-form options">
+      <%= button_to @todo_private_toggle_label, @todo, :method => :put %>
+      <%= button_to "delete", @todo, :method => :delete %>
+    </div>
+<% end  %>
+
 <h4>Tasks</h4>
 
-<ul>
-  <% if @todo.tasks.empty? %>
-      No tasks made yet...
-  <% else %>
-      <% @todo.tasks.each do |task|  %>
-          <li>
-            <% if task.finished? %>
-                <span class="finished"><%= task.content %></span>
-            <% else %>
-                <%= task.content %>
-            <% end %>
+<% if @todo.tasks.empty? %>
+    No tasks made yet...
+<% else %>
+    <table class="table table-striped">
+      <thead>
+        <% if current_user == @todo.user %>
+            <tr>
+              <th>Task</th>
+              <th>Options</th>
+            </tr>
+        <% end %>
+      </thead>
 
-            <% if current_user == @todo.user  %>
-                <%= button_to "delete", todo_task_path(@todo, task), :method => :delete %>
-                <%= button_to "toggle finished", todo_task_path(@todo, task), :method => :put %>
-            <% end %>
-          </li>
+      <tbody>
+        <% @todo.tasks.each do |task| %>
+            <tr>
+              <% if task.finished? %>
+                  <td class="finished"><%= task.content %></td>
+              <% else %>
+                  <td><%= task.content %></td>
+              <% end %>
+
+
+              <% if current_user == @todo.user %>
+                  <td class="options">
+                    <%= button_to "delete", todo_task_path(@todo, task), :method => :delete %>
+                    <%= button_to "toggle finished", todo_task_path(@todo, task), :method => :put %>
+                  </td>
+              <% end %>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>
+
+<% if current_user == @todo.user %>
+    <div class="add-task-form">
+      <h4>Add a new task</h4>
+
+      <%= simple_form_for @task, url: todo_tasks_path(@todo) do |f| %>
+          <%= f.input :content, label: "Task" %>
+          <%= f.button :submit %>
       <% end %>
-  <% end %>
-</ul>
-
-<% if current_user == @todo.user  %>
-    <p>Add task</p>
-
-    <%= simple_form_for @task, url: todo_tasks_path(@todo) do |f| %>
-        <%= f.input :content, label: "Task" %>
-        <%= f.button :submit %>
-    <% end %>
+    </div>
 <% end %>

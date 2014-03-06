@@ -7,7 +7,9 @@ Todos::Application.routes.draw do
 
   root :to => 'todos#index'
 
-  get '/user', to: 'users#profile'
+  #match 'user_root' => 'users#profile'
+
+  #get '/user', to: 'users#profile'
   get '/user/todos', to: 'users#todos'
   get '/export', to: 'export#export'
 
