@@ -18,7 +18,22 @@
 //= require_tree .
 
 $(function() {
-    $('.datatable').dataTable({
+    $('.datatable-todos').dataTable({
+        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+        "sPaginationType": "bootstrap",
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": "/todos/json",
+        "fnRowCallback": function(nRow, aData) {
+            var link = '<a href="'+ aData[3] +'">' + aData[0] + '</a>';
+
+            $('td:eq(0)', nRow).html(link);
+
+            return nRow;
+        }
+    });
+
+    $('.datatable-tasks').dataTable({
         "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
         "sPaginationType": "bootstrap"
     });

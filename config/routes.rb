@@ -12,6 +12,7 @@ Todos::Application.routes.draw do
   #get '/user', to: 'users#profile'
   get '/user/todos', to: 'users#todos'
   get '/export', to: 'export#export'
+  get '/todos/json', to: 'todos#json', defaults: { format: 'json' }
 
   resources :todos do
     resources :tasks, only: [:new, :edit, :create, :update, :destroy]
