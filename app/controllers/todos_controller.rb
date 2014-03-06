@@ -80,7 +80,7 @@ class TodosController < ApplicationController
     todos = Todo.limit(params[:iDisplayLength]).offset(params[:iDisplayStart])
 
     if params[:sSearch].present?
-      todos = todos.where('lower(title) LIKE :search', search: "%#{params[:sSearch]}%".downcase)
+      todos = todos.joins(:user).where('lower(todos.title) LIKE :search OR lower(users.name) LIKE :search', search: "%#{params[:sSearch]}%".downcase)
     end
 
     todos
