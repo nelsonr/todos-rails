@@ -93,7 +93,7 @@ class TodosController < ApplicationController
     todos_json[:iTotalDisplayRecords] = Todo.all.count
 
     todos_json[:aaData] = todos.map do |todo|
-      [todo.title, todo.user.name, todo.created_at, todo_path(todo)]
+      [todo.title, todo.user.name, todo.created_at.strftime("%d %b %Y"), todo_path(todo)]
     end
 
     todos_json
