@@ -11,7 +11,7 @@ class ExportController < ApplicationController
 
     # Add some styles
     wb.styles do |s|
-      heading = s.add_style bg_color: "33", fg_color: "FF", sz: 15, alignment: {horizontal: :center}
+      heading = s.add_style bg_color: "33", fg_color: "FF", sz: 13, alignment: {horizontal: :center}
       todo_heading = s.add_style bg_color: "66", fg_color: "FF", sz: 12
 
       # Add the data
@@ -31,9 +31,10 @@ class ExportController < ApplicationController
   def list_todos(todos_list, heading, sheet, todo_heading)
     todos_list.each do |todo|
       # Todos Title
-      sheet.add_row ["Title", todo.title], style: heading
-      sheet.add_row ["Private", status?(todo.private)]
-      sheet.add_row ["User", todo.user.name]
+      sheet.add_row ["Title", "User", "Private"], style: heading
+      sheet.add_row [todo.title, todo.user.name, status?(todo.private)]
+
+      spacer(sheet, 1) # add 1 empty row
 
       # Tasks
       sheet.add_row ["Content", "Finished?"], style: todo_heading
