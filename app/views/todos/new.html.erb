@@ -1,12 +1,17 @@
-<h1>Create todo</h1>
+<div class="page-header"><h1>Create todo</h1></div>
 
-<%= simple_form_for @todo do |f| %>
+<%= simple_form_for(@todo, :html => {:class => 'form-vertical' }) do |f| %>
     <%= f.input :title %>
-    <%= f.input :private %>
 
     <%= f.simple_fields_for :tasks do |task| %>
-        <%= task.input :content %>
+        <%= task.input :content, label: "Task" %>
     <% end %>
 
-    <%= f.button :submit %>
+    <%= f.input :private, label: false, inline_label: "Private" %>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.button :submit %>
+      </div>
+    </div>
 <% end %>

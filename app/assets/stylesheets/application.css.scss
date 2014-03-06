@@ -1,0 +1,12 @@
+@import "bootstrap";
+
+.todo-list {
+  .todo-item {
+    display: block;
+
+  }
+}
+
+.finished {
+  text-decoration: line-through;
+}

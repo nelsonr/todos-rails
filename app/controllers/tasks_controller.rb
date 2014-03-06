@@ -9,6 +9,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    @todo = Todo.find(params[:todo_id])
+    @task = Task.find(params[:id])
+    @task.finished = !@task.finished
+
+    @task.save
+
+    redirect_to @todo
+  end
+
   def destroy
     @task = Task.find(params[:id])
     @task.destroy

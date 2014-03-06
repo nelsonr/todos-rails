@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1>Todos</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Owner</th>
+      <th>Created Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todos.each do |todo| %>
+        <tr>
+          <td><%= link_to todo.title, todo %></td>
+          <td><%= todo.user.name %></td>
+          <td><%= todo.user.created_at.strftime("%d %b %y") %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

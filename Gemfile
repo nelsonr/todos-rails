@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.16'
 gem 'bootstrap-sass', '2.3.2.2'
 gem 'simple_form'
+gem 'faker', '1.0.1'
+gem 'axlsx'
 
 # Authentication
 gem 'devise'

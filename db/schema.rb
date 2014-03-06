@@ -16,18 +16,17 @@ ActiveRecord::Schema.define(:version => 20140305002258) do
   create_table "tasks", :force => true do |t|
     t.string   "content"
     t.integer  "todo_id"
-    t.boolean  "finished"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "finished",   :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "todos", :force => true do |t|
     t.string   "title"
-    t.string   "content"
     t.integer  "user_id"
-    t.boolean  "private"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "private",    :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|

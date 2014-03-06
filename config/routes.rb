@@ -7,10 +7,12 @@ Todos::Application.routes.draw do
 
   root :to => 'todos#index'
 
-  get '/profile', to: 'users#profile'
+  get '/user', to: 'users#profile'
+  get '/user/todos', to: 'users#todos'
+  get '/export', to: 'export#export'
 
   resources :todos do
-    resources :tasks, only: [:new, :edit, :create, :destroy]
+    resources :tasks, only: [:new, :edit, :create, :update, :destroy]
   end
 
   # The priority is based upon order of creation:

@@ -1,9 +1,9 @@
-<h1>View Todo</h1>
+<div class="page-header">
+  <h1><%= @todo.title %></h1>
+  <div>by <%= @todo.user.name %></div>
+</div>
 
-<p>Title: <%= @todo.title %></p>
-<p>Owner: <%= @todo.user.name %></p>
-
-<p>Tasks</p>
+<h4>Tasks</h4>
 
 <ul>
   <% if @todo.tasks.empty? %>
@@ -11,10 +11,15 @@
   <% else %>
       <% @todo.tasks.each do |task|  %>
           <li>
-            <%= task.content %>
+            <% if task.finished? %>
+                <span class="finished"><%= task.content %></span>
+            <% else %>
+                <%= task.content %>
+            <% end %>
 
             <% if current_user == @todo.user  %>
                 <%= button_to "delete", todo_task_path(@todo, task), :method => :delete %>
+                <%= button_to "toggle finished", todo_task_path(@todo, task), :method => :put %>
             <% end %>
           </li>
       <% end %>
@@ -25,7 +30,7 @@
     <p>Add task</p>
 
     <%= simple_form_for @task, url: todo_tasks_path(@todo) do |f| %>
-        <%= f.input :content, label: "Task text" %>
+        <%= f.input :content, label: "Task" %>
         <%= f.button :submit %>
     <% end %>
 <% end %>

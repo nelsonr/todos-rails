@@ -3,7 +3,7 @@ class CreateTodos < ActiveRecord::Migration
     create_table :todos do |t|
       t.string :title
       t.integer :user_id
-      t.boolean :private, :default => true, :null => false
+      t.boolean :private, :default => false, :null => false
 
       t.timestamps
     end
