@@ -5,6 +5,7 @@ gem 'bootstrap-sass', '2.3.2.2'
 gem 'simple_form'
 gem 'faker', '1.0.1'
 gem 'axlsx'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 # Authentication
 gem 'devise'
