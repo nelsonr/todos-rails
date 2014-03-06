@@ -23,7 +23,7 @@ $(function() {
         "sPaginationType": "bootstrap",
         "bProcessing": true,
         "bServerSide": true,
-        "sAjaxSource": "/todos/json",
+        "sAjaxSource": $('[data-source]').val(),
         "fnRowCallback": function(nRow, aData) {
             var link = '<a href="'+ aData[3] +'">' + aData[0] + '</a>';
 

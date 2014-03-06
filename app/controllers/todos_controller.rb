@@ -1,17 +1,24 @@
 class TodosController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new, :update]
 
-  respond_to :html, :json
-
   def index
-    if user_signed_in?
-      public_todos = Todo.where("user_id != ? AND private=false", current_user)
-      user_todos = current_user.todos
+    @todos_source = todos_json_path
+    @todos = Todo.where private: false
 
-      @todos = public_todos + user_todos
-    else
-      @todos = Todo.where private: false
+    respond_to do |format|
+      format.html
+      format.json { render json: json_handler }
     end
+  end
+
+  def json_handler
+    todos = Todo.where(private: false)
+    todos_total = todos.count
+
+    todos = todos.limit(params[:iDisplayLength].to_i)
+                 .offset(params[:iDisplayStart])
+
+    json_helper(todos, todos_total)
   end
 
   def new
@@ -66,36 +73,5 @@ class TodosController < ApplicationController
     end
 
     redirect_to root_path
-  end
-
-  def json
-    todos = to_json(get_datatables_todos)
-
-    respond_with todos, :format => 'json'
-  end
-
-  private
-
-  def get_datatables_todos
-    todos = Todo.limit(params[:iDisplayLength]).offset(params[:iDisplayStart])
-
-    if params[:sSearch].present?
-      todos = todos.joins(:user).where('lower(todos.title) LIKE :search OR lower(users.name) LIKE :search', search: "%#{params[:sSearch]}%".downcase)
-    end
-
-    todos
-  end
-
-  def to_json(todos)
-    todos_json = Hash.new
-    todos_json[:sEcho] = params[:sEcho].to_i
-    todos_json[:iTotalRecords] = todos.count
-    todos_json[:iTotalDisplayRecords] = Todo.all.count
-
-    todos_json[:aaData] = todos.map do |todo|
-      [todo.title, todo.user.name, todo.created_at.strftime("%d %b %Y"), todo_path(todo)]
-    end
-
-    todos_json
   end
 end
