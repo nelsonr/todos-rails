@@ -54,4 +54,14 @@ class TodosController < ApplicationController
 
     redirect_to todo
   end
+
+  def destroy
+    todo = Todo.find(params[:id])
+
+    if todo.user == current_user
+      todo.destroy
+    end
+
+    redirect_to root_path
+  end
 end
