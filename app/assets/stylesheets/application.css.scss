@@ -38,3 +38,14 @@
 .toggle-privacy-form {
   margin-bottom: 3em;
 }
+
+// dataTable sorted column
+.table-striped {
+  .odd .sorting_1 {
+    background-color: #7ac3cf;
+  }
+
+  .even .sorting_1 {
+    background-color: #6badb9;
+  }
+}
