@@ -14,28 +14,40 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.api.fnReloadAjax
 //= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .
 
 $(function() {
-    $('.datatable-todos').dataTable({
-        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-        "sPaginationType": "bootstrap",
-        "bProcessing": true,
-        "bServerSide": true,
-        "sAjaxSource": $('[data-source]').val(),
-        "fnRowCallback": function(nRow, aData) {
-            var link = '<a href="'+ aData[3] +'">' + aData[0] + '</a>';
+    var dtable, timer;
 
-            $('td:eq(0)', nRow).html(link);
+    if ($('.datatable-todos').length) {
+        dtable = $('.datatable-todos').dataTable({
+            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+            "sPaginationType": "bootstrap",
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": $('[data-source]').val(),
+            "fnRowCallback": function(nRow, aData) {
+                var link = '<a href="'+ aData[3] +'">' + aData[0] + '</a>';
 
-            return nRow;
-        }
-    });
+                $('td:eq(0)', nRow).html(link);
+
+                return nRow;
+            }
+        });
+    }
 
     $('.datatable-tasks').dataTable({
         "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
         "sPaginationType": "bootstrap"
     });
+
+    if (dtable) {
+        // Reload table every 5 seconds
+        timer = setInterval(function() {
+            dtable.fnReloadAjax();
+        }, 5000);
+    }
 });
 
