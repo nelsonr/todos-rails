@@ -3,5 +3,4 @@
 A project to learn how to Rails
 
 Missing:
-- Table column sort
 - Real time updates
