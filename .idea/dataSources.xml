@@ -5,8 +5,6 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:todos_development</jdbc-url>
-      <user-name>postgres</user-name>
-      <user-password>dfdadfcd</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails todos: test" uuid="969d1567-48b6-4dd3-bde9-43b40b9ba4ac">
