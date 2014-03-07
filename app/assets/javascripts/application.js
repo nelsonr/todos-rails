@@ -49,5 +49,8 @@ $(function() {
             dtable.fnReloadAjax();
         }, 5000);
     }
+
+    // Remove data table class
+    $('.dataTable').removeClass('dataTable');
 });
 
